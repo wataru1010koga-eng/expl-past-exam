@@ -1,0 +1,125 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getQuestions, YEAR_INFO } from '../../utils/questions';
+
+export function getStaticPaths() {
+  return ['r3', 'r4', 'r5', 'r6'].map(year => ({ params: { year } }));
+}
+
+const { year } = Astro.params;
+const info = YEAR_INFO[year];
+const questions = getQuestions(year);
+---
+
+<Layout
+  title={`${info.label} 問題一覧 | 技術士一次試験 過去問解説`}
+  description={`技術士第一次試験 森林部門・専門科目 ${info.label}の全35問。問題一覧。`}
+  activeYear={year}
+>
+  <nav class="breadcrumb" aria-label="パンくずリスト">
+    <a href="/">トップ</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>{info.label}</span>
+  </nav>
+
+  <h1>{info.label} 問題一覧</h1>
+
+  <div class="pending-notice">
+    <span class="notice-icon">📝</span>
+    <div>
+      <strong>解説を準備中です</strong>
+      <p>この年度の解説は現在作成中です。完成次第、各問題のページを公開します。</p>
+    </div>
+  </div>
+
+  <p class="list-meta">
+    森林部門・専門科目　全{questions.length}問
+    <span class="badge badge-pending" style="margin-left: 0.5rem;">解説準備中</span>
+  </p>
+
+  <ol class="question-list">
+    {questions.map(q => (
+      <li class="question-item">
+        <div class="question-row">
+          <span class="q-number">第{q.number}問</span>
+          <span class="q-text">{q.question.length > 65 ? q.question.slice(0, 65) + '…' : q.question}</span>
+        </div>
+      </li>
+    ))}
+  </ol>
+</Layout>
+
+<style>
+  .pending-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background: #fff8e1;
+    border: 1px solid #ffe082;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+
+  .notice-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .pending-notice strong {
+    display: block;
+    margin-bottom: 0.2rem;
+  }
+
+  .pending-notice p {
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    margin: 0;
+  }
+
+  .list-meta {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .question-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .question-item {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+  }
+
+  .question-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .q-number {
+    flex-shrink: 0;
+    font-weight: 700;
+    color: var(--color-text-muted);
+    font-size: 0.88rem;
+    min-width: 3.5rem;
+  }
+
+  .q-text {
+    font-size: 0.87rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+</style>

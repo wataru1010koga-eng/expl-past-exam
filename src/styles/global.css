@@ -1,0 +1,178 @@
+:root {
+  --color-primary: #2d6a4f;
+  --color-primary-hover: #40916c;
+  --color-primary-light: #52b788;
+  --color-primary-bg: #d8f3dc;
+  --color-bg: #f4f7f4;
+  --color-surface: #ffffff;
+  --color-text: #1a2e1a;
+  --color-text-muted: #5a6e5a;
+  --color-border: #c8ddc8;
+  --color-correct-bg: #d8f3dc;
+  --color-correct-border: #52b788;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Noto Sans JP', 'Hiragino Sans', 'Yu Gothic', 'Meiryo', sans-serif;
+  background: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.container {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+/* ─── Header ─── */
+.site-header {
+  background: var(--color-primary);
+  padding: 1rem 0;
+}
+
+.site-title {
+  text-decoration: none;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.site-title:hover {
+  color: white;
+  opacity: 0.9;
+}
+
+.site-title-main {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.site-title-sub {
+  font-size: 0.8rem;
+  opacity: 0.85;
+}
+
+/* ─── Year nav ─── */
+.year-nav {
+  background: var(--color-primary-hover);
+}
+
+.year-nav .container {
+  display: flex;
+}
+
+.year-nav-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background 0.15s, color 0.15s;
+  border-bottom: 3px solid transparent;
+}
+
+.year-nav-link:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: white;
+}
+
+.year-nav-link.active {
+  color: white;
+  border-bottom-color: white;
+}
+
+/* ─── Main ─── */
+.main-content {
+  padding: 2rem 1.25rem 3rem;
+  min-height: 60vh;
+}
+
+/* ─── Footer ─── */
+.site-footer {
+  background: var(--color-primary);
+  color: rgba(255, 255, 255, 0.75);
+  padding: 1.5rem 0;
+  margin-top: 3rem;
+  font-size: 0.78rem;
+  line-height: 1.7;
+}
+
+.site-footer p + p {
+  margin-top: 0.25rem;
+}
+
+/* ─── Common ─── */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-primary-hover);
+  text-decoration: underline;
+}
+
+h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--color-primary);
+}
+
+h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+/* ─── Badge ─── */
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.badge-complete {
+  background: var(--color-primary-bg);
+  color: var(--color-primary);
+}
+
+.badge-pending {
+  background: #e9ecef;
+  color: #6c757d;
+}
+
+/* ─── Breadcrumb ─── */
+.breadcrumb {
+  font-size: 0.82rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.breadcrumb a {
+  color: var(--color-text-muted);
+}
+
+.breadcrumb a:hover {
+  color: var(--color-primary);
+}
+
+.breadcrumb-sep {
+  opacity: 0.5;
+}

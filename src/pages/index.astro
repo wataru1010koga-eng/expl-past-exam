@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { YEAR_INFO } from '../utils/questions';
+
+const years = ['r7', 'r6', 'r5', 'r4', 'r3'] as const;
+---
+
+<Layout title="技術士一次試験 過去問解説 | 森林部門・専門科目">
+  <div class="home-intro">
+    <p>技術士第一次試験（森林部門・専門科目）の過去問と解説をまとめたサイトです。<br />令和3〜7年度の問題・選択肢・解説を無料で公開しています。</p>
+  </div>
+
+  <div class="year-cards">
+    {years.map(yearKey => {
+      const info = YEAR_INFO[yearKey];
+      return (
+        <a href={`/${yearKey}/`} class:list={['year-card', { 'year-card--complete': info.hasExplanations }]}>
+          <div class="year-card-badge">{info.shortLabel}</div>
+          <div class="year-card-label">{info.label}</div>
+          <div class="year-card-meta">全35問</div>
+          <div class="year-card-status">
+            {info.hasExplanations
+              ? <span class="badge badge-complete">解説完成</span>
+              : <span class="badge badge-pending">解説準備中</span>
+            }
+          </div>
+        </a>
+      );
+    })}
+  </div>
+
+  <div class="home-note">
+    <p>問題の出所：公益社団法人 日本技術士会 公式PDF</p>
+  </div>
+</Layout>
+
+<style>
+  .home-intro {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--color-text-muted);
+  }
+
+  .year-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .year-card {
+    background: white;
+    border: 2px solid var(--color-border);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    text-decoration: none;
+    color: var(--color-text);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    transition: border-color 0.15s, box-shadow 0.15s, transform 0.1s;
+  }
+
+  .year-card:hover {
+    text-decoration: none;
+    border-color: var(--color-primary-light);
+    box-shadow: 0 4px 12px rgba(45, 106, 79, 0.12);
+    transform: translateY(-2px);
+    color: var(--color-text);
+  }
+
+  .year-card--complete {
+    border-color: var(--color-primary-light);
+  }
+
+  .year-card-badge {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1;
+    margin-bottom: 0.15rem;
+  }
+
+  .year-card-label {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  .year-card-meta {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+  }
+
+  .year-card-status {
+    margin-top: 0.25rem;
+  }
+
+  .home-note {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
+    text-align: right;
+  }
+</style>

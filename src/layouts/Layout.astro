@@ -1,0 +1,72 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+  activeYear?: string;
+}
+
+const {
+  title,
+  description = '技術士第一次試験（森林部門・専門科目）の過去問解説サイト。令和3〜7年度・全35問の問題・選択肢・解説を無料で公開。',
+  activeYear,
+} = Astro.props;
+
+const YEARS = ['r7', 'r6', 'r5', 'r4', 'r3'] as const;
+const YEAR_SHORT: Record<string, string> = {
+  r7: 'R7', r6: 'R6', r5: 'R5', r4: 'R4', r3: 'R3',
+};
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <a href="/" class="site-title">
+          <span class="site-title-main">技術士一次試験 過去問解説</span>
+          <span class="site-title-sub">森林部門・専門科目</span>
+        </a>
+      </div>
+    </header>
+
+    <nav class="year-nav" aria-label="年度ナビゲーション">
+      <div class="container">
+        {YEARS.map(year => (
+          <a
+            href={`/${year}/`}
+            class:list={['year-nav-link', { active: activeYear === year }]}
+            aria-current={activeYear === year ? 'page' : undefined}
+          >
+            {YEAR_SHORT[year]}
+          </a>
+        ))}
+      </div>
+    </nav>
+
+    <main class="container main-content">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>問題の著作権は公益社団法人 日本技術士会に帰属します。出所を明示して掲載しています。指摘があれば即対応いたします。</p>
+        <p>解説はClaude AIで生成後、レビューして掲載しています。</p>
+      </div>
+    </footer>
+  </body>
+</html>

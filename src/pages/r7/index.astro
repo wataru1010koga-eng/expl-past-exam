@@ -1,0 +1,104 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getQuestions, YEAR_INFO } from '../../utils/questions';
+
+const yearKey = 'r7';
+const info = YEAR_INFO[yearKey];
+const questions = getQuestions(yearKey);
+---
+
+<Layout
+  title={`${info.label} 問題一覧 | 技術士一次試験 過去問解説`}
+  description={`技術士第一次試験 森林部門・専門科目 ${info.label}の全35問。問題・選択肢・解説を掲載。`}
+  activeYear={yearKey}
+>
+  <nav class="breadcrumb" aria-label="パンくずリスト">
+    <a href="/">トップ</a>
+    <span class="breadcrumb-sep">›</span>
+    <span>{info.label}</span>
+  </nav>
+
+  <h1>{info.label} 問題一覧</h1>
+
+  <p class="list-meta">
+    森林部門・専門科目　全{questions.length}問
+    <span class="badge badge-complete" style="margin-left: 0.5rem;">解説完成</span>
+  </p>
+
+  <ol class="question-list">
+    {questions.map(q => (
+      <li class="question-item">
+        <a href={`/r7/${q.number}/`} class="question-link">
+          <span class="q-number">第{q.number}問</span>
+          <span class="q-text">{q.question.length > 60 ? q.question.slice(0, 60) + '…' : q.question}</span>
+          <span class="q-arrow">›</span>
+        </a>
+      </li>
+    ))}
+  </ol>
+</Layout>
+
+<style>
+  .list-meta {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .question-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .question-item {
+    background: white;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  .question-item:hover {
+    border-color: var(--color-primary-light);
+    box-shadow: 0 2px 8px rgba(45, 106, 79, 0.1);
+  }
+
+  .question-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
+  .question-link:hover {
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
+  .q-number {
+    flex-shrink: 0;
+    font-weight: 700;
+    color: var(--color-primary);
+    font-size: 0.9rem;
+    min-width: 3.5rem;
+  }
+
+  .q-text {
+    flex: 1;
+    font-size: 0.88rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+
+  .q-arrow {
+    color: var(--color-primary-light);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+</style>
