@@ -21,7 +21,7 @@ export interface QuestionWithExplanation extends Question {
 
 export const YEAR_INFO: Record<string, { label: string; shortLabel: string; hasExplanations: boolean }> = {
   r7: { label: '令和7年度（2025年）', shortLabel: 'R7', hasExplanations: true },
-  r6: { label: '令和6年度（2024年）', shortLabel: 'R6', hasExplanations: false },
+  r6: { label: '令和6年度（2024年）', shortLabel: 'R6', hasExplanations: true },
   r5: { label: '令和5年度（2023年）', shortLabel: 'R5', hasExplanations: false },
   r4: { label: '令和4年度（2022年）', shortLabel: 'R4', hasExplanations: false },
   r3: { label: '令和3年度（2021年）', shortLabel: 'R3', hasExplanations: false },
