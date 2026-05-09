@@ -8,3 +8,4 @@ dist/
 *.pdf
 *.numbers
 .claude/
+note_material.md
