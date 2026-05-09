@@ -13,7 +13,7 @@ const questions = getQuestions(year);
 
 <Layout
   title={`${info.label} 問題一覧 | 技術士一次試験 過去問解説`}
-  description={`技術士第一次試験 森林部門・専門科目 ${info.label}の全35問。問題一覧。`}
+  description={`技術士第一次試験 森林部門・専門科目 ${info.label}の全35問。${info.hasExplanations ? '問題・選択肢・解説を掲載。' : '問題一覧。'}`}
   activeYear={year}
 >
   <nav class="breadcrumb" aria-label="パンくずリスト">
@@ -24,26 +24,39 @@ const questions = getQuestions(year);
 
   <h1>{info.label} 問題一覧</h1>
 
-  <div class="pending-notice">
-    <span class="notice-icon">📝</span>
-    <div>
-      <strong>解説を準備中です</strong>
-      <p>この年度の解説は現在作成中です。完成次第、各問題のページを公開します。</p>
+  {!info.hasExplanations && (
+    <div class="pending-notice">
+      <span class="notice-icon">📝</span>
+      <div>
+        <strong>解説を準備中です</strong>
+        <p>この年度の解説は現在作成中です。完成次第、各問題のページを公開します。</p>
+      </div>
     </div>
-  </div>
+  )}
 
   <p class="list-meta">
     森林部門・専門科目　全{questions.length}問
-    <span class="badge badge-pending" style="margin-left: 0.5rem;">解説準備中</span>
+    {info.hasExplanations
+      ? <span class="badge badge-complete" style="margin-left: 0.5rem;">解説完成</span>
+      : <span class="badge badge-pending" style="margin-left: 0.5rem;">解説準備中</span>
+    }
   </p>
 
   <ol class="question-list">
     {questions.map(q => (
-      <li class="question-item">
-        <div class="question-row">
-          <span class="q-number">第{q.number}問</span>
-          <span class="q-text">{q.question.length > 65 ? q.question.slice(0, 65) + '…' : q.question}</span>
-        </div>
+      <li class:list={['question-item', { 'question-item--linked': info.hasExplanations }]}>
+        {info.hasExplanations ? (
+          <a href={`/${year}/${q.number}/`} class="question-link">
+            <span class="q-number">第{q.number}問</span>
+            <span class="q-text">{q.question.length > 60 ? q.question.slice(0, 60) + '…' : q.question}</span>
+            <span class="q-arrow">›</span>
+          </a>
+        ) : (
+          <div class="question-row">
+            <span class="q-number">第{q.number}問</span>
+            <span class="q-text">{q.question.length > 65 ? q.question.slice(0, 65) + '…' : q.question}</span>
+          </div>
+        )}
       </li>
     ))}
   </ol>
@@ -93,33 +106,68 @@ const questions = getQuestions(year);
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 0.4rem;
+    gap: 0.5rem;
   }
 
   .question-item {
     background: white;
     border: 1px solid var(--color-border);
     border-radius: 8px;
-    padding: 0.75rem 1rem;
+  }
+
+  .question-item--linked {
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  .question-item--linked:hover {
+    border-color: var(--color-primary-light);
+    box-shadow: 0 2px 8px rgba(45, 106, 79, 0.1);
+  }
+
+  .question-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    text-decoration: none;
+    color: var(--color-text);
+  }
+
+  .question-link:hover {
+    text-decoration: none;
+    color: var(--color-text);
   }
 
   .question-row {
     display: flex;
     align-items: flex-start;
     gap: 0.75rem;
+    padding: 0.75rem 1rem;
   }
 
   .q-number {
     flex-shrink: 0;
     font-weight: 700;
-    color: var(--color-text-muted);
-    font-size: 0.88rem;
+    color: var(--color-primary);
+    font-size: 0.9rem;
     min-width: 3.5rem;
   }
 
+  .question-item:not(.question-item--linked) .q-number {
+    color: var(--color-text-muted);
+    font-size: 0.88rem;
+  }
+
   .q-text {
-    font-size: 0.87rem;
+    flex: 1;
+    font-size: 0.88rem;
     color: var(--color-text-muted);
     line-height: 1.5;
+  }
+
+  .q-arrow {
+    color: var(--color-primary-light);
+    font-size: 1.1rem;
+    flex-shrink: 0;
   }
 </style>
