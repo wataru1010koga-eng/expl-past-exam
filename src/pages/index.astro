@@ -29,6 +29,18 @@ const years = ['r7', 'r6', 'r5', 'r4', 'r3'] as const;
     })}
   </div>
 
+  <div class="home-note-promo">
+    <p class="home-note-promo-lead">このサイトはどうやって作った？</p>
+    <div class="home-note-promo-links">
+      <a href="https://note.com/magnoliaob2/n/n50c997ee6a86" target="_blank" rel="noopener noreferrer" class="note-link-primary">
+        制作記事を読む（note）
+      </a>
+      <a href="https://note.com/magnoliaob2" target="_blank" rel="noopener noreferrer" class="note-link-secondary">
+        著者のnoteを見る
+      </a>
+    </div>
+  </div>
+
   <div class="home-note">
     <p>問題の出所：公益社団法人 日本技術士会 公式PDF</p>
   </div>
@@ -105,5 +117,53 @@ const years = ['r7', 'r6', 'r5', 'r4', 'r3'] as const;
     font-size: 0.78rem;
     color: var(--color-text-muted);
     text-align: right;
+  }
+
+  .home-note-promo {
+    background: var(--color-primary-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .home-note-promo-lead {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  .home-note-promo-links {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .note-link-primary {
+    background: var(--color-primary);
+    color: #fff;
+    padding: 0.45rem 1rem;
+    border-radius: 6px;
+    font-size: 0.88rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+
+  .note-link-primary:hover {
+    background: var(--color-primary-hover);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .note-link-secondary {
+    font-size: 0.88rem;
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+
+  .note-link-secondary:hover {
+    color: var(--color-primary-hover);
   }
 </style>
