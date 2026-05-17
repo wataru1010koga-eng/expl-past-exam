@@ -29,16 +29,13 @@ const years = ['r7', 'r6', 'r5', 'r4', 'r3'] as const;
     })}
   </div>
 
-  <div class="home-note-promo">
-    <p class="home-note-promo-lead">このサイトはどうやって作った？</p>
-    <div class="home-note-promo-links">
-      <a href="https://note.com/magnoliaob2/n/n50c997ee6a86" target="_blank" rel="noopener noreferrer" class="note-link-primary">
-        制作記事を読む（note）
-      </a>
-      <a href="https://note.com/magnoliaob2" target="_blank" rel="noopener noreferrer" class="note-link-secondary">
-        著者のnoteを見る
-      </a>
-    </div>
+  <a href="https://note.com/magnoliaob2/n/n50c997ee6a86" target="_blank" rel="noopener noreferrer" class="note-article-card">
+    <span class="note-article-label">📝 note</span>
+    <span class="note-article-text">このサイトを作成した経緯はこちら（noteの記事）</span>
+    <span class="note-article-arrow">→</span>
+  </a>
+  <div class="note-author-link-wrap">
+    <a href="https://note.com/magnoliaob2" target="_blank" rel="noopener noreferrer" class="note-author-link">著者のnoteを見る</a>
   </div>
 
   <div class="home-note">
@@ -119,51 +116,54 @@ const years = ['r7', 'r6', 'r5', 'r4', 'r3'] as const;
     text-align: right;
   }
 
-  .home-note-promo {
-    background: var(--color-primary-bg);
+  .note-article-card {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    background: white;
     border: 1px solid var(--color-border);
-    border-radius: 8px;
-    padding: 1rem 1.5rem;
+    border-left: 3px solid var(--color-primary-light);
+    border-radius: 6px;
+    padding: 0.65rem 1rem;
+    margin-bottom: 0.4rem;
+    text-decoration: none;
+    color: var(--color-text-muted);
+    font-size: 0.88rem;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+
+  .note-article-card:hover {
+    border-left-color: var(--color-primary);
+    box-shadow: 0 2px 8px rgba(45, 106, 79, 0.1);
+    color: var(--color-text);
+    text-decoration: none;
+  }
+
+  .note-article-label {
+    flex-shrink: 0;
+  }
+
+  .note-article-text {
+    flex: 1;
+  }
+
+  .note-article-arrow {
+    flex-shrink: 0;
+    color: var(--color-primary-light);
+  }
+
+  .note-author-link-wrap {
+    text-align: right;
     margin-bottom: 1rem;
   }
 
-  .home-note-promo-lead {
-    font-size: 0.9rem;
+  .note-author-link {
+    font-size: 0.78rem;
     color: var(--color-text-muted);
-    margin-bottom: 0.75rem;
-  }
-
-  .home-note-promo-links {
-    display: flex;
-    gap: 0.75rem;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .note-link-primary {
-    background: var(--color-primary);
-    color: #fff;
-    padding: 0.45rem 1rem;
-    border-radius: 6px;
-    font-size: 0.88rem;
-    font-weight: 500;
-    text-decoration: none;
-    transition: background 0.15s;
-  }
-
-  .note-link-primary:hover {
-    background: var(--color-primary-hover);
-    color: #fff;
-    text-decoration: none;
-  }
-
-  .note-link-secondary {
-    font-size: 0.88rem;
-    color: var(--color-primary);
     text-decoration: underline;
   }
 
-  .note-link-secondary:hover {
-    color: var(--color-primary-hover);
+  .note-author-link:hover {
+    color: var(--color-primary);
   }
 </style>
