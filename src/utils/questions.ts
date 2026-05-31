@@ -23,45 +23,66 @@ export const YEAR_INFO: Record<string, { label: string; shortLabel: string; hasE
   r7: { label: '令和7年度（2025年）', shortLabel: 'R7', hasExplanations: true },
   r6: { label: '令和6年度（2024年）', shortLabel: 'R6', hasExplanations: true },
   r5: { label: '令和5年度（2023年）', shortLabel: 'R5', hasExplanations: true },
-  r4: { label: '令和4年度（2022年）', shortLabel: 'R4', hasExplanations: false },
+  r4: { label: '令和4年度（2022年）', shortLabel: 'R4', hasExplanations: true },
   r3: { label: '令和3年度（2021年）', shortLabel: 'R3', hasExplanations: false },
 };
 
-function parseCSVLine(line: string): string[] {
-  const fields: string[] = [];
-  let current = '';
-  let inQuote = false;
+function parseCSVContent(content: string): string[][] {
+  const rows: string[][] = [];
+  let pos = 0;
 
-  for (let i = 0; i < line.length; i++) {
-    const char = line[i];
-    if (char === '"') {
-      if (inQuote && line[i + 1] === '"') {
-        current += '"';
-        i++;
+  while (pos < content.length) {
+    const row: string[] = [];
+
+    while (pos < content.length) {
+      let field = '';
+      if (content[pos] === '"') {
+        pos++;
+        while (pos < content.length) {
+          if (content[pos] === '"') {
+            if (pos + 1 < content.length && content[pos + 1] === '"') {
+              field += '"';
+              pos += 2;
+            } else {
+              pos++;
+              break;
+            }
+          } else {
+            field += content[pos++];
+          }
+        }
       } else {
-        inQuote = !inQuote;
+        while (pos < content.length && content[pos] !== ',' && content[pos] !== '\n' && content[pos] !== '\r') {
+          field += content[pos++];
+        }
       }
-    } else if (char === ',' && !inQuote) {
-      fields.push(current);
-      current = '';
-    } else {
-      current += char;
+      row.push(field);
+
+      if (pos < content.length && content[pos] === ',') {
+        pos++;
+      } else {
+        break;
+      }
     }
+
+    if (pos < content.length && content[pos] === '\r') pos++;
+    if (pos < content.length && content[pos] === '\n') pos++;
+
+    if (row.some(f => f.trim())) rows.push(row);
   }
-  fields.push(current);
-  return fields;
+
+  return rows;
 }
 
 export function getQuestions(yearKey: string): Question[] {
   const csvPath = join(process.cwd(), 'content', yearKey, `${yearKey}_questions.csv`);
   const content = readFileSync(csvPath, 'utf-8').replace(/^﻿/, '');
 
-  const lines = content.trim().split('\n');
-  return lines
+  const rows = parseCSVContent(content);
+  return rows
     .slice(1)
-    .filter(line => line.trim())
-    .map(line => {
-      const fields = parseCSVLine(line);
+    .filter(fields => fields.some(f => f.trim()))
+    .map(fields => {
       const [yearStr, numberStr, question, answerStr, ...choices] = fields;
       return {
         year: parseInt(yearStr),

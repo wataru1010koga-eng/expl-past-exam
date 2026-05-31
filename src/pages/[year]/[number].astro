@@ -55,7 +55,7 @@ function renderMarkdown(text: string): string {
 
   <div class="question-card">
     <div class="question-card-label">問題文</div>
-    <p class="question-text">{data.question}</p>
+    <p class="question-text" set:html={data.question.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/\n/g, '<br>').replace(/【([アイウエオ])】/g, '<span class="blank-marker">【$1】</span>')}></p>
   </div>
 
   <div class="choices-section-label">選択肢</div>
@@ -145,6 +145,11 @@ function renderMarkdown(text: string): string {
   .question-text {
     font-size: 0.97rem;
     line-height: 1.85;
+  }
+
+  .question-text :global(.blank-marker) {
+    font-weight: 700;
+    color: var(--color-primary);
   }
 
   .choices-section-label {
