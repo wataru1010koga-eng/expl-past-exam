@@ -24,7 +24,7 @@ export const YEAR_INFO: Record<string, { label: string; shortLabel: string; hasE
   r6: { label: '令和6年度（2024年）', shortLabel: 'R6', hasExplanations: true },
   r5: { label: '令和5年度（2023年）', shortLabel: 'R5', hasExplanations: true },
   r4: { label: '令和4年度（2022年）', shortLabel: 'R4', hasExplanations: true },
-  r3: { label: '令和3年度（2021年）', shortLabel: 'R3', hasExplanations: false },
+  r3: { label: '令和3年度（2021年）', shortLabel: 'R3', hasExplanations: true },
 };
 
 function parseCSVContent(content: string): string[][] {
