@@ -11,5 +11,7 @@ answer: 4
 山腹工事（山腹工）は治山事業だけでなく砂防事業でも実施される工種であり、「山腹工事は砂防事業では行われない」とする記述は誤りである。治山事業と砂防事業は根拠法や所管が異なるが、工事内容には共通する部分がある。
 
 【参考】
-治山事業の定義と山腹工等の工種を示す林野庁のページ
+林野庁　治山事業
 https://www.rinya.maff.go.jp/j/tisan/tisan/con_3.html
+ベーシックインフォメーションセンター株式会社
+https://www.bic-net.jp/construction_cafe/cc_2509dobokunogenba/

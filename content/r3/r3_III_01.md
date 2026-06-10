@@ -13,3 +13,6 @@ answer: 3
 【参考】
 農林水産省「作物統計調査 林業産出額」（林業産出額の推移）
 https://www.maff.go.jp/j/tokei/kouhyou/ringyou_sansyutu/gaiyou/index.html
+
+令和６年度 林業白書　第2章 林業と山村（中山間地域）
+https://www.rinya.maff.go.jp/j/kikaku/hakusyo/r6hakusyo_h/summary/s_2.html

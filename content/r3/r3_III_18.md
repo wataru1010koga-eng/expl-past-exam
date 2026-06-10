@@ -11,5 +11,5 @@ answer: 3
 積石の合端とその背後をコンクリートで固める工法は「練積工」であり、「空積工」は合端のみを直接かみ合わせコンクリートを用いずに積む工法である。空積工の説明としてコンクリートで固めると述べている点が不適切。
 
 【参考】
-山腹工における石積工（空積工・練積工）の構造と各種山腹基礎工の種類を解説したページ
-https://www.pref.kyoto.jp/shinrinhozen/chisan/sanpukukou.html
+林野庁　治山技術基準（総則・山地治山編）
+https://www.rinya.maff.go.jp/j/sekou/kizyun/gijutu_kijun.html

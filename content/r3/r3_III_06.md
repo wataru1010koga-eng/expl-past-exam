@@ -11,5 +11,5 @@ answer: 3
 コンテナ容器内面のリブ（縦筋状の突起）は、根がコンテナ内壁に沿って渦巻き状に巻く「根巻き（ルーピング）」を防止するための構造である。記述は「根巻きが進む」としており、目的と逆の効果を述べている点で最も不適切。
 
 【参考】
-コンテナ容器内壁のリブ（筋状突起）が根巻き（ルーピング）防止のための構造であることを示す新潟県森林研究所のページ
-https://www.pref.niigata.lg.jp/site/shinrin/rin-nii-202109.html
+森林総合研究所　JFA-150 コンテナ苗育苗・植栽マニュアル
+https://www.rinya.maff.go.jp/j/kanbatu/houkokusho/attach/pdf/syubyou-1.pdf

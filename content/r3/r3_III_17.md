@@ -11,5 +11,8 @@ answer: 5
 土石流は流域面積1km²以下の小規模渓流に多く発生し、流出土砂量も数万m³規模のものが多く、「流域面積5km²以上・数10万m³規模が多い」とする記述は不適切である。
 
 【参考】
-土石流の発生区間や流出規模など砂防基本事項を解説した国土交通省のページ
+国土交通省　砂防：土石流とその対策
 https://www.mlit.go.jp/mizukokudo/sabo/dosekiryuu_taisaku.html
+
+第三編 土石流編 平成 30 年 4 月 - 埼玉県
+https://www.pref.saitama.lg.jp/documents/127756/kisocyousam-dosekiryu.pdf
