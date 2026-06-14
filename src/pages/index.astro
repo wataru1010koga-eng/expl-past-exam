@@ -29,8 +29,18 @@ const years = ['r7', 'r6', 'r5', 'r4', 'r3'] as const;
     })}
   </div>
 
+  <a href="https://note.com/magnoliaob2/n/ndac0ad3c5346" target="_blank" rel="noopener noreferrer" class="note-article-card">
+    <div class="note-article-body">
+      <span class="note-article-text">過去問攻略ガイド（令和3〜7年・全175問）</span>
+      <span class="note-article-sub">各問の出どころと論点をまとめた俯瞰図。このサイトと組み合わせると、各分野の傾向と頻出問題が把握できます</span>
+    </div>
+    <span class="note-article-arrow">→</span>
+  </a>
   <a href="https://note.com/magnoliaob2/n/n50c997ee6a86" target="_blank" rel="noopener noreferrer" class="note-article-card">
-    <span class="note-article-text">このサイトを作成した経緯はこちら（noteの記事）</span>
+    <div class="note-article-body">
+      <span class="note-article-text">このサイトを作成した経緯はこちら（noteの記事）</span>
+      <span class="note-article-sub">AIを使いながらも一問ずつ目で確かめた175問。「解説がなくて困った」同じ経験をした合格者が作りました</span>
+    </div>
     <span class="note-article-arrow">→</span>
   </a>
   <div class="note-author-link-wrap">
@@ -117,13 +127,13 @@ const years = ['r7', 'r6', 'r5', 'r4', 'r3'] as const;
 
   .note-article-card {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     gap: 0.6rem;
     background: white;
     border: 1px solid var(--color-border);
     border-left: 3px solid var(--color-primary-light);
     border-radius: 6px;
-    padding: 0.65rem 1rem;
+    padding: 0.75rem 1rem;
     margin-bottom: 0.4rem;
     text-decoration: none;
     color: var(--color-text-muted);
@@ -138,16 +148,27 @@ const years = ['r7', 'r6', 'r5', 'r4', 'r3'] as const;
     text-decoration: none;
   }
 
-  .note-article-label {
-    flex-shrink: 0;
+  .note-article-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
   }
 
   .note-article-text {
-    flex: 1;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--color-text);
+  }
+
+  .note-article-sub {
+    font-size: 0.78rem;
+    color: var(--color-text-muted);
   }
 
   .note-article-arrow {
     flex-shrink: 0;
+    margin-top: 0.15rem;
     color: var(--color-primary-light);
   }
 
