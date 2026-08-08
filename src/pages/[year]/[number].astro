@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import { getQuestions, getQuestionWithExplanation, YEAR_INFO } from '../../utils/questions';
 
 export function getStaticPaths() {
-  const yearsWithExplanations = (['r6', 'r5', 'r4', 'r3'] as const).filter(
+  const yearsWithExplanations = (['r7', 'r6', 'r5', 'r4', 'r3'] as const).filter(
     y => YEAR_INFO[y].hasExplanations
   );
   return yearsWithExplanations.flatMap(year =>

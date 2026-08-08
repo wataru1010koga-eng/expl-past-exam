@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import { getQuestions, YEAR_INFO } from '../../utils/questions';
 
 export function getStaticPaths() {
-  return ['r3', 'r4', 'r5', 'r6'].map(year => ({ params: { year } }));
+  return ['r3', 'r4', 'r5', 'r6', 'r7'].map(year => ({ params: { year } }));
 }
 
 const { year } = Astro.params;
