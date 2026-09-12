@@ -17,6 +17,13 @@ export interface Revision {
  */
 export const REVISIONS: Revision[] = [
   {
+    date: '2026-09-12',
+    yearLabel: 'R7',
+    number: 4,
+    href: '/r7/4/',
+    summary: '第4問 選択肢④の問題文OCR誤字「柑高」を「樹高」に修正。内容の正誤に変更はありません。',
+  },
+  {
     date: '2026-08-08',
     yearLabel: 'R4',
     number: 24,
