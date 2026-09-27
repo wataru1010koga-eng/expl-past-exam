@@ -17,6 +17,13 @@ export interface Revision {
  */
 export const REVISIONS: Revision[] = [
   {
+    date: '2026-09-28',
+    yearLabel: 'R5',
+    number: 32,
+    href: '/r5/32/',
+    summary: '第32問 選択肢②の問題文OCR誤字「U=(m-mo)/mo×100(%)」を「U=(m-mo)/m×100(%)」に修正（分母の誤り）。内容の正誤に変更はありません。',
+  },
+  {
     date: '2026-09-12',
     yearLabel: 'R7',
     number: 4,
